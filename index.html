@@ -10,9 +10,7 @@
   </head>
   <body>
     <div class="container">
-      <div>
-        <h1 class="title">Shixiong's Twiddler</h1>
-      </div>
+      <h1 class="title">Shixiong's Twiddler</h1>
       <div class="tweets">
         <section class="main"></section>
         <section class="newFeed"></section>
@@ -39,7 +37,7 @@
           }
 
           // button for new tweets
-          var $button = $("<input class=btn type=button value='Check New Tweet'>");
+          var $button = $("<input class='btn new' type=button value='Check New Tweet'>");
           $button.appendTo($body);
 
           $button.on("click", function(){
@@ -50,13 +48,33 @@
             var $newMessage = $('<p class=message></p>');
             var $newDateTime = $('<span class=dateTime></span>');
 
-            $newUser.addClass(newTweet.user).attr('data-user', newTweet.user).text('@' + newTweet.user + ' - ').appendTo($newTweet)
+            $newUser.addClass(newTweet.user).attr('data-user', newTweet.user).text('@' + newTweet.user + ' - ').appendTo($newTweet);
             $newMessage.text(newTweet.message).appendTo($newTweet);
             $newDateTime.attr('data-livestamp', new Date().toUTCString()).appendTo($newTweet);
             $newTweet.appendTo('.newFeed');
           });
 
-          
+          // mouseover effect
+          $('.tweets').on('mouseover', '.tweet .user', function(event){
+            $(this).addClass('highlight');
+          });
+          $('.tweets').on('mouseleave', '.tweet .user', function(event){
+            $(this).removeClass('highlight');
+          });
+
+          // user timeline
+          $('.tweets').on('click', '.tweet .user', function(event){
+
+            var user = $(this).data('user');
+            $('.timeline').remove();  // remove the timeline when you click the second time
+            var $timeline = $('<h2 class=timeline>' + user + '\'s Timeline</h2>');
+            $timeline.prependTo($body);
+            $('.new').hide();
+            
+            $('.tweet').not('div:contains("' + user + '")').hide(400);
+            $('div:contains("' + user + '")').show(400);
+
+          });
 
         });
       </script>

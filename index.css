@@ -20,11 +20,11 @@ p{
 
 .btn{
 	color: white;
-	background: #c9167a;
+	background: #c40370;
 	font-weight: bold;
 	margin: 20px auto;
-	padding: 15px 15px;
-	border: 1px solid #c9167a;
+	padding: 10px 15px;
+	border: 1px solid #c40370;
 	border-radius: 20px;
 	outline: none;
 	float: right;
@@ -44,5 +44,10 @@ p{
 .dateTime{
 	margin-left: 10px;
 	color: gray;
+}
+
+.highlight{
+	color: #05a897;
+	cursor: auto;
 }
 
