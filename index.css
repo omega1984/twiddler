@@ -20,15 +20,24 @@ p{
 
 .btn{
 	color: white;
-	background: #c40370;
 	font-weight: bold;
 	margin: 20px auto;
 	padding: 10px 15px;
-	border: 1px solid #c40370;
 	border-radius: 20px;
 	outline: none;
-	float: right;
 	font-size: 15px;
+}
+
+.home{
+	background: #c40370;
+	border: 1px solid #c40370;
+	float: left;
+}
+
+.new{
+	background: #07c4b0;
+	border: 1px solid #07c4b0;
+	float: right;
 }
 
 .user{
@@ -49,5 +58,9 @@ p{
 .highlight{
 	color: #05a897;
 	cursor: auto;
+}
+
+.timeline{
+	color: #815796;
 }
 

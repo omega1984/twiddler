@@ -38,7 +38,7 @@
 
           // button for new tweets
           var $button = $('<input class="btn new" type=button value="Check New Tweet">');
-          $button.appendTo($body);
+          $button.appendTo('.tweets');
 
           $button.on("click", function(){
             generateRandomTweet();
@@ -62,23 +62,27 @@
             $(this).removeClass('highlight');
           });
 
+          // home button for going back
+          var $homeButton = $('<input class="btn home" type=button value=Home>');
+          $homeButton.appendTo('.tweets');
+          $homeButton.on('click', function(){
+            $('.timeline').remove();
+            // $homeButton.hide();
+            $('.tweet').show(350);
+            $('.new').show(350);
+          });
+
           // user timeline
-          $('.tweets').on('click', '.tweet .user', function(event){
+          $('.tweet').on('click', '.user', function(event){
             var user = $(this).data('user');
             $('.timeline').remove();  // remove the timeline when you click the second time
 
             var $timeline = $('<h2 class=timeline>' + user + '\'s Timeline</h2>');
             $timeline.prependTo($body);
             $('.new').hide();
-
+            // $homeButton.show(350);
             $('.tweet').not('div:contains("' + user + '")').hide(350);
             $('div:contains("' + user + '")').show(350);
-          });
-
-          // home button for going back
-          var $homeButton = $('<input class="btn home" type=button value=Home>');
-          $homeButton.on('click', function(){
-            
           });
 
         });
