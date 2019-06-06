@@ -8,57 +8,58 @@
     <script src="data_generator.js"></script>
   </head>
   <body>
-    <div>
-      <h1>Shixiong's Twiddler</h1>
-    </div>
-    <div class="tweets">
-      <section class="main"></section>
-      <section class="newFeed"></section>
-    </div>
+    <div class="container">
+      <div>
+        <h1>Shixiong's Twiddler</h1>
+      </div>
+      <div class="tweets">
+        <section class="main"></section>
+        <section class="newFeed"></section>
+      </div>
+
+      <script>
+        $(document).ready(function(){
+          var $body = $('.tweets');
+          // $body.html('');
+
+          var index = streams.home.length - 1;
+          while(index >= 0){
+            var tweet = streams.home[index];
+            var $tweet = $('<div class=tweet></div>');
+            var $user = $('<p class=user></p>');
+            var $message = $('<p class=message></p>');
+            var $dateTime = $('<span class=dateTime></span>');
+
+            $user.addClass(tweet.user).attr('data-user', tweet.user).text('@' + tweet.user + ' ').appendTo($tweet);
+            $message.text(tweet.message).appendTo($tweet);
+            $dateTime.attr('data-livestamp', tweet.created_at.toUTCString()).appendTo($tweet);
+            $tweet.appendTo('.main');
+            index--;
+          }
+
+          // button for new tweets
+          var $button = $("<input class=btn type=button value='Check New Tweet'>");
+          $button.appendTo($body);
+
+          $button.on("click", function(){
+            generateRandomTweet();
+            var newTweet = streams.home.pop();
+            var $newTweet = $('<div class=tweet></div>');
+            var $newUser = $('<p class=user></p>');
+            var $newMessage = $('<p class=message></p>');
+            var $newDateTime = $('<span class=dateTime></span>');
+
+            $newUser.addClass(newTweet.user).attr('data-user', newTweet.user).text('@' + newTweet.user + ' ').appendTo($newTweet)
+            $newMessage.text(newTweet.message).appendTo($newTweet);
+            $newDateTime.attr('data-livestamp', new Date().toUTCString()).appendTo($newTweet);
+            $newTweet.appendTo('.newFeed');
+          });
 
 
-    <script>
-      $(document).ready(function(){
-        var $body = $('.tweets');
-        // $body.html('');
-
-        var index = streams.home.length - 1;
-        while(index >= 0){
-          var tweet = streams.home[index];
-          var $tweet = $('<div class=tweet></div>');
-          var $user = $('<p class=user></p>');
-          var $message = $('<p class=message></p>');
-          var $dateTime = $('<span class=dateTime></span>');
-
-          $user.addClass(tweet.user).attr('data-user', tweet.user).text('@' + tweet.user + ' ').appendTo($tweet);
-          $message.text(tweet.message).appendTo($tweet);
-          $dateTime.attr('data-livestamp', tweet.created_at.toUTCString()).appendTo($tweet);
-          $tweet.appendTo('.main');
-          index--;
-        }
-
-        // button for new tweets
-        var $button = $("<input class=btn type=button value='Check New Tweet'>");
-        $button.appendTo($body);
-
-        $button.on("click", function(){
-          generateRandomTweet();
-          var newTweet = streams.home.pop();
-          var $newTweet = $('<div class=tweet></div>');
-          var $newUser = $('<p class=user></p>');
-          var $newMessage = $('<p class=message></p>');
-          var $newDateTime = $('<span class=dateTime></span>');
-
-          $newUser.addClass(newTweet.user).attr('data-user', newTweet.user).text('@' + newTweet.user + ' ').appendTo($newTweet)
-          $newMessage.text(newTweet.message).appendTo($newTweet);
-          $newDateTime.attr('data-livestamp', new Date().toUTCString()).appendTo($newTweet);
-          $newTweet.appendTo('.newFeed');
         });
+      </script>
 
-      });
-    </script>
-
-
+    </div>
   </body>
 </html>
 
