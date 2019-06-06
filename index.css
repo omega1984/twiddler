@@ -1,28 +1,43 @@
 body{
-	background: rgb(56, 77, 112);
+	background: white;
 }
 
 p{
 	margin: 0;
 }
 
+.title{
+	color: #2c4da5;
+	text-align: center;
+}
+
 .container{
-	width: 75%;
-	border: 5px solid black;
+	width: 60%;
 	margin: 35px auto;
-	padding: 20px 20px
+	padding: 20px 20px;
 }
 
 .btn{
-	margin: 15px auto;
+	color: white;
+	background: #c9167a;
+	font-weight: bold;
+	margin: 20px auto;
+	padding: 15px 15px;
+	border: 1px solid #c9167a;
+	border-radius: 20px;
+	outline: none;
+	float: right;
+	font-size: 15px;
 }
 
 .user{
+	display: inline;
 	font-weight: bold;
 }
 
 .message{
 	display: inline;
+	font-family: "Roboto", sans-serif;
 }
 
 .dateTime{

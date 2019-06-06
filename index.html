@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <link href="https://fonts.googleapis.com/css?family=Roboto:400,700&display=swap" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="index.css">
     <script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.js"></script>
@@ -10,7 +11,7 @@
   <body>
     <div class="container">
       <div>
-        <h1>Shixiong's Twiddler</h1>
+        <h1 class="title">Shixiong's Twiddler</h1>
       </div>
       <div class="tweets">
         <section class="main"></section>
@@ -30,7 +31,7 @@
             var $message = $('<p class=message></p>');
             var $dateTime = $('<span class=dateTime></span>');
 
-            $user.addClass(tweet.user).attr('data-user', tweet.user).text('@' + tweet.user + ' ').appendTo($tweet);
+            $user.addClass(tweet.user).attr('data-user', tweet.user).text('@' + tweet.user + ' - ').appendTo($tweet);
             $message.text(tweet.message).appendTo($tweet);
             $dateTime.attr('data-livestamp', tweet.created_at.toUTCString()).appendTo($tweet);
             $tweet.appendTo('.main');
@@ -49,7 +50,7 @@
             var $newMessage = $('<p class=message></p>');
             var $newDateTime = $('<span class=dateTime></span>');
 
-            $newUser.addClass(newTweet.user).attr('data-user', newTweet.user).text('@' + newTweet.user + ' ').appendTo($newTweet)
+            $newUser.addClass(newTweet.user).attr('data-user', newTweet.user).text('@' + newTweet.user + ' - ').appendTo($newTweet)
             $newMessage.text(newTweet.message).appendTo($newTweet);
             $newDateTime.attr('data-livestamp', new Date().toUTCString()).appendTo($newTweet);
             $newTweet.appendTo('.newFeed');
