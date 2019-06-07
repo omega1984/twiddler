@@ -19,8 +19,8 @@
             <textarea id="textarea" placeholder="Enter your new tweet here!"></textarea>
           </form>
           <button id="submit">Submit!</button>
-          <input class="btn new" type=button value="Check New Tweet">
-          <input class="btn home" type=button value=Home>
+          <input class="btn new" type="button" value="Check New Tweet">
+          <input class="btn home" type="button" value="Home">
       </div>
       <div class="tweets">
         <section class="main"></section>
@@ -73,10 +73,9 @@
 
           // home button for going back
           $('.home').on('click', function(){
-            $('.timeline').remove();
-            // $homeButton.hide();
-            $('.tweet').show();
-            $('.new').show();
+            $('.timeline').remove();  // remove h2
+            $('.tweet').show();  // show all tweet div
+            $('.new').show();  // show new button
           });
 
           // user timeline
@@ -87,8 +86,9 @@
             var $timeline = $('<h2 class=timeline>' + user + '\'s Timeline</h2>');
             $timeline.prependTo($body);
             $('.new').hide();
-            // $homeButton.show(350);
+            // hide all tweet-class-div that doesn't contain this clicked username
             $('.tweet').not('div:contains("' + user + '")').hide();
+            // show all div that contains this clicked username
             $('div:contains("' + user + '")').show();
           });
 
@@ -99,6 +99,7 @@
             var $newMessage = $('<p class=message></p>');
             var $newDateTime = $('<span class=dateTime></span>');
 
+            // $('#username') is the input area
             $newUser.addClass($('#username').val()).attr('data-user', $('#username').val()).text('@' + $('#username').val() + ' - ').appendTo($newTweet);
             $newMessage.text($('#textarea').val()).appendTo($newTweet);
             $newDateTime.attr('data-livestamp', new Date().toUTCString()).appendTo($newTweet);
