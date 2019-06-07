@@ -11,6 +11,15 @@
   <body>
     <div class="container">
       <h1 class="title">Shixiong's Twiddler</h1>
+      <div id="form">
+          <form>
+            <input id="username" type="text" name="" placeholder="your username">
+          </form>
+          <form>
+            <textarea id="textarea" placeholder="Enter your new tweet here!"></textarea>
+          </form>
+          <button id="submit">Submit!</button>
+      </div>
       <div class="tweets">
         <section class="main"></section>
         <section class="newFeed"></section>
@@ -83,6 +92,21 @@
             // $homeButton.show(350);
             $('.tweet').not('div:contains("' + user + '")').hide(350);
             $('div:contains("' + user + '")').show(350);
+          });
+
+          // allow users to create new tweets
+          $('#submit').on('click', function(){
+            var $newTweet = $('<div class=tweet></div>');
+            var $newUser = $('<p class=user></p>');
+            var $newMessage = $('<p class=message></p>');
+            var $newDateTime = $('<span class=dateTime></span>');
+
+            $newUser.addClass($('#username').val()).attr('data-user', $('#username').val()).text('@' + $('#username').val() + ' - ').appendTo($newTweet);
+            $newMessage.text($('#textarea').val()).appendTo($newTweet);
+            $newDateTime.attr('data-livestamp', new Date().toUTCString()).appendTo($newTweet);
+            $newTweet.appendTo('.newFeed');
+            $('#textarea').val("");
+            $('#username').val("");
           });
 
         });
