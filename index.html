@@ -82,7 +82,7 @@
           });
 
           // user timeline
-          $('.tweet').on('click', '.user', function(event){
+          $('.tweets').on('click', '.tweet .user', function(event){
             var user = $(this).data('user');
             $('.timeline').remove();  // remove the timeline when you click the second time
 
