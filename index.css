@@ -16,7 +16,7 @@ p{
 
 .container{
 	width: 60%;
-	margin: 0 auto;
+	margin: 10px auto;
 	padding: auto 20px;
 }
 
@@ -24,7 +24,7 @@ p{
 	color: white;
 	font-weight: bold;
 	margin: 20px auto;
-	padding: 10px 20px 10px 20px;
+	padding: 5px 20px 5px 20px;
 	border-radius: 20px;
 	outline: none;
 	font-size: 15px;
@@ -33,13 +33,15 @@ p{
 .home{
 	background: #c40370;
 	border: 1px solid #c40370;
-	float: left;
+	float: center;
+	margin: 5px auto;
 }
 
 .new{
 	background: #07c4b0;
 	border: 1px solid #07c4b0;
-	float: right;
+	float: center;
+	margin: 5px auto;
 }
 
 .user{

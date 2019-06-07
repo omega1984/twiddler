@@ -19,6 +19,8 @@
             <textarea id="textarea" placeholder="Enter your new tweet here!"></textarea>
           </form>
           <button id="submit">Submit!</button>
+          <input class="btn new" type=button value="Check New Tweet">
+          <input class="btn home" type=button value=Home>
       </div>
       <div class="tweets">
         <section class="main"></section>
@@ -38,6 +40,7 @@
             var $message = $('<p class=message></p>');
             var $dateTime = $('<span class=dateTime></span>');
 
+            // adding a class, an data attr to the $user <p>/ let it's text to be @'username', and finally append the whole thing to $tweet <div> where we store every single tweet.
             $user.addClass(tweet.user).attr('data-user', tweet.user).text('@' + tweet.user + ' - ').appendTo($tweet);
             $message.text(tweet.message).appendTo($tweet);
             $dateTime.attr('data-livestamp', tweet.created_at.toUTCString()).appendTo($tweet);
@@ -46,10 +49,7 @@
           }
 
           // button for new tweets
-          var $button = $('<input class="btn new" type=button value="Check New Tweet">');
-          $button.appendTo('.tweets');
-
-          $button.on("click", function(){
+          $('.new').on("click", function(){
             generateRandomTweet();
             var newTweet = streams.home.pop();
             var $newTweet = $('<div class=tweet></div>');
@@ -72,26 +72,24 @@
           });
 
           // home button for going back
-          var $homeButton = $('<input class="btn home" type=button value=Home>');
-          $homeButton.appendTo('.tweets');
-          $homeButton.on('click', function(){
+          $('.home').on('click', function(){
             $('.timeline').remove();
             // $homeButton.hide();
-            $('.tweet').show(350);
-            $('.new').show(350);
+            $('.tweet').show();
+            $('.new').show();
           });
 
           // user timeline
           $('.tweets').on('click', '.tweet .user', function(event){
-            var user = $(this).data('user');
+            var user = $(this).data('user');  //this.dataset.user in JS
             $('.timeline').remove();  // remove the timeline when you click the second time
 
             var $timeline = $('<h2 class=timeline>' + user + '\'s Timeline</h2>');
             $timeline.prependTo($body);
             $('.new').hide();
             // $homeButton.show(350);
-            $('.tweet').not('div:contains("' + user + '")').hide(350);
-            $('div:contains("' + user + '")').show(350);
+            $('.tweet').not('div:contains("' + user + '")').hide();
+            $('div:contains("' + user + '")').show();
           });
 
           // allow users to create new tweets
@@ -117,7 +115,7 @@
 </html>
 
 <!-- streams = {
-    home: [], 
+    home: [tweet, tweet, tweet, tweet], 
     users: {
         "mracus": [tweet"], 
         "sharksforcheap": ["tweet"], 
