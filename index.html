@@ -45,7 +45,7 @@
             $message.text(tweet.message).appendTo($tweet);
             $dateTime.attr('data-livestamp', tweet.created_at.toUTCString()).appendTo($tweet);
             $tweet.appendTo('.main');
-            index--;
+            index--;  // go to the next tweet
           }
 
           // button for new tweets
@@ -86,10 +86,13 @@
             var $timeline = $('<h2 class=timeline>' + user + '\'s Timeline</h2>');
             $timeline.prependTo($body);
             $('.new').hide();
+
+            $('.tweet').hide();
+            $('p[data-user="' + user + '"').parent().show();
             // hide all tweet-class-div that doesn't contain this clicked username
-            $('.tweet').not('div:contains("' + user + '")').hide();
+            // $('.tweet').not('div:contains("' + user + '")').hide();
             // show all div that contains this clicked username
-            $('div:contains("' + user + '")').show();
+            // $('div:contains("' + user + '")').show();
           });
 
           // allow users to create new tweets
